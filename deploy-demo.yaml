@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: demo
+  name: demo
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: demo
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: demo
+    spec:
+      containers:
+      - image: quay.io/uvelyster/demo
+        name: demo
+        resources: {}
+status: {}
