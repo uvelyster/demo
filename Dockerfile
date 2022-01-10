@@ -1,7 +1,6 @@
-#FROM docker.io/ubuntu:18.04
+FROM docker.io/ubuntu:18.04
 
-#RUN apt-get update -y && apt-get install -y python-pip python-dev
-FROM python:3.7-slim-buster
+RUN apt-get update -y && apt-get install -y python-pip python3.7-dev
 
 COPY ./requirement.txt /app/requirement.txt
 
