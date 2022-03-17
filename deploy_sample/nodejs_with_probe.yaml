@@ -1,0 +1,39 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: node-js
+  labels:
+    name: node-js
+spec:
+  replicas: 3
+  selector:
+    name: node-js
+  template:
+    metadata:
+      labels:
+        name: node-js
+    spec:
+      containers:
+      - name: node-js
+        image: jonbaier/node-express-info:latest
+        ports:
+        - containerPort: 80
+        livenessProbe:
+          httpGet: 
+            path: /
+            port: 80
+          initialDelaySeconds: 30
+          timeoutSeconds: 1 
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: node-js
+spec:
+  selector:
+    name: node-js
+  ports:
+  - port: 80
+  type: NodePort
+

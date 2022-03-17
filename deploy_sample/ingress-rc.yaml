@@ -1,0 +1,42 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: nginx-pod
+  labels:
+    app: nginx
+spec:
+  replicas: 2
+  selector: 
+    app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - name: sayhey
+        image: nginx
+        ports:
+        - containerPort: 80
+
+---
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: apache-pod
+  labels:
+    app: apache
+spec:
+  replicas: 2
+  selector: 
+    app: apache
+  template:
+    metadata:
+      labels:
+        app: apache
+    spec:
+      containers:
+      - name: sayhey
+        image: httpd
+        ports:
+        - containerPort: 80
