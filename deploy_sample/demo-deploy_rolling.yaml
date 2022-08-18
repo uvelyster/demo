@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    name: node-js-deploy
+  name: node-js-deploy
+spec:
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 25%
+      maxSurge: 25%
+  replicas: 10
+  selector:
+    matchLabels:
+      name: node-js-deploy
+  template:
+    metadata:
+      labels:
+        name: node-js-deploy
+    spec:
+      containers:
+      - image: docker.io/library/nginx:1.7.9
+        name: node-js-deploy
+        ports:
+        - containerPort: 80
