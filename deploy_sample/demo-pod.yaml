@@ -5,10 +5,16 @@ metadata:
   labels:
     app: nginx
 spec:
+  imagePullSecrets:
+    - name: registry-secret
   containers:
   - name: demopod
     image: nginx
     ports: 
     - containerPort: 80
-  nodeSelector:
-    tier: frontend
+#    resources:
+#      requests:
+#        cpu: 250m
+#  nodeSelector:
+#    tier: frontend
+
