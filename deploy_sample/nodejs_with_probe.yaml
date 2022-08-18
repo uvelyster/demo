@@ -15,12 +15,12 @@ spec:
     spec:
       containers:
       - name: node-js
-        image: jonbaier/node-express-info:latest
+        image: docker.io/library/nginx
         ports:
         - containerPort: 80
         livenessProbe:
           httpGet: 
-            path: /
+            path: /healthz
             port: 80
           initialDelaySeconds: 30
           timeoutSeconds: 1 
