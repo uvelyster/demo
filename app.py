@@ -3,7 +3,7 @@ app = Flask(__name__)
 
 @app.route("/")
 def main():
-    return "it works!!\n"
+    return "it works!!goot job\n"
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0')
