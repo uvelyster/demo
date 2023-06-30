@@ -5,7 +5,7 @@ metadata:
     app: demo
   name: demo
 spec:
-  replicas: 3
+  replicas: 1
   selector:
     matchLabels:
       app: demo
@@ -15,5 +15,5 @@ spec:
         app: demo
     spec:
       containers:
-      - image: quay.io/uvelyster/demo
+      - image: 469427049902.dkr.ecr.ap-northeast-2.amazonaws.com/web
         name: demo
