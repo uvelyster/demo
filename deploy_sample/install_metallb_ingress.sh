@@ -11,24 +11,29 @@ kubectl get pod -n ingress-nginx
 #---------------------------
 
 # Install MetalLB 
-kubectl apply -f https://raw.githubusercontent.com/metallb/metallb/v0.10.2/manifests/namespace.yaml
-kubectl apply -f https://raw.githubusercontent.com/metallb/metallb/v0.10.2/manifests/metallb.yaml
+kubectl apply -f https://raw.githubusercontent.com/metallb/metallb/v0.14.4/config/manifests/metallb-native.yaml
 
-# Config MetalLB Pool 
+# metallb_pool_config.yaml
 cat << EOF > metallb_pool_config.yaml
-apiVersion: v1
-kind: ConfigMap
+apiVersion: metallb.io/v1beta1
+kind: IPAddressPool
 metadata:
+  name: first-pool
   namespace: metallb-system
-  name: config
-data:
-  config: |
-    address-pools:
-    - name: default
-      protocol: layer2
-      addresses:
-      - 172.16.0.210-172.16.0.220
+spec:
+  addresses:
+  - 172.16.0.210-172.16.0.220
+---
+apiVersion: metallb.io/v1beta1
+kind: L2Advertisement
+metadata:
+  name: example
+  namespace: metallb-system
+spec:
+  ipAddressPools:
+  - first-pool
 EOF
+
 
 kubectl apply -f metallb_pool_config.yaml
 
