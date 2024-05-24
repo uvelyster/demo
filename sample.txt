@@ -1,0 +1,13 @@
+- Petclinic application
+Source: https://github.com/redhat-developer-demos/spring-petclinic.git
+
+
+- Spring-music application
+Builder Image : quay.io/uvelyster/gradlebuilder 
+Source : https://github.com/uvelyster/spring-music.git
+Original source : https://github.com/cloudfoundry-samples/spring-music.git
+
+
+- Yaml Sample Code
+Source : https://github.com/uvelyster/demo.git
+
