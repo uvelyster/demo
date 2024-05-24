@@ -15,5 +15,5 @@ spec:
         app: demo
     spec:
       containers:
-      - image: 469427049902.dkr.ecr.ap-northeast-2.amazonaws.com/web
+      - image: quay.io/uvelyster/demo
         name: demo
