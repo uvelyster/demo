@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: php-apache
-        image: myregistry.com:5000/loadtraffic
+        image: quay.io/uvelyster/loadtraffic
         ports:
         - containerPort: 80
         resources:

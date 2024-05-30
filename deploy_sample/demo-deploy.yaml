@@ -2,36 +2,18 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    name: node-js-deploy
-  name: node-js-deploy
+    app: demo
+  name: demo
 spec:
-  strategy: 
-    type: Recreate
-  replicas: 5
+  replicas: 1
   selector:
     matchLabels:
-      name: node-js-deploy
+      app: demo
   template:
     metadata:
       labels:
-        name: node-js-deploy
+        app: demo
     spec:
       containers:
-      - image: jonbaier/pod-scaling:0.1
-        name: node-js-deploy
-        ports:
-        - containerPort: 80
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: node-js-deploy
-  labels:
-    name: node-js-deploy
-spec:
-  type: LoadBalancer
-  ports:
-  - port: 80
-  sessionAffinity: ClientIP
-  selector:
-    name: node-js-deploy
+      - image: quay.io/uvelyster/demo
+        name: demo
